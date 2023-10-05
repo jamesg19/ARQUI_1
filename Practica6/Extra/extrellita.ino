@@ -1,6 +1,6 @@
 int piezoPin = 7; // Pin digital al que está conectado el altavoz piezoeléctrico
 
-// Definir las notas y sus frecuencias correspondientes (en Hz)
+// Definir las notas en sus frecuencias correspondientes (en Hz)
 int melody[] = {
   523, 523, 784, 784, 880, 880, 784, 0, 
   698, 698, 659, 659, 587, 587, 523, 0, 
@@ -10,7 +10,7 @@ int melody[] = {
   698, 698, 659, 659, 587, 587, 523, 0
 };
 
-// Duraciones: 4 = negra, 8 = corchea, etc. (en milisegundos)
+// Duraciones: (en milisegundos)
 int noteDurations[] = {
   500, 500, 500, 500, 500, 500, 1000, 500, 
   500, 500, 500, 500, 500, 500, 1000, 500, 
@@ -28,7 +28,7 @@ void loop() {
   // Reproducir la melodía "Estrellita, ¿dónde estás?"
   for (int i = 0; i < sizeof(melody) / sizeof(melody[0]); i++) {
     if (melody[i] == 0) {
-      delay(noteDurations[i]); // Espera si es un silencio
+      delay(noteDurations[i]); // Espera si es un silencio en el arreglo melody = 0
     } else {
       tone(piezoPin, melody[i]); // Toca la nota
       delay(noteDurations[i]); // Espera por la duración de la nota
